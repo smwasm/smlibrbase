@@ -22,7 +22,9 @@ checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
 
 [[package]]
 name = "smcore"
-version = "0.1.1"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e442aca257d7239fe879dc13a5c69547b6b2cbc55b373c178a65c0157ff1ba92"
 dependencies = [
  "json",
  "lazy_static",
@@ -31,7 +33,9 @@ dependencies = [
 
 [[package]]
 name = "smdton"
-version = "0.1.1"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cdb32e78f37ca0785a32118ac3a5c03482544e19261205f8e9f3f67a1f24cc7d"
 dependencies = [
  "base64",
  "json",
@@ -40,7 +44,7 @@ dependencies = [
 
 [[package]]
 name = "smlibrbase"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "json",
  "lazy_static",
