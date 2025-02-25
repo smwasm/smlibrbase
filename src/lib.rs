@@ -92,8 +92,8 @@ pub fn call(poff: i32, work: i32) -> i32 {
                 let intxt = get_text_d(poff); // heap -
                 return handle_call_in_text(&intxt, work, sp);
             } else {
-                let (name, smb) = get_smb_d(poff); // heap -
-                return handle_call_in(&name, smb, work, sp);
+                let (_name, smb) = get_smb_d(poff); // heap -
+                return handle_call_in(smb, work, sp);
             }
         }
         _ => {}

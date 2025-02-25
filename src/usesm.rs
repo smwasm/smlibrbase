@@ -40,9 +40,9 @@ impl FL {
 }
 
 #[inline]
-pub fn act(name: &str, parameter: SmDtonBuffer, work: bool) -> SmDtonBuffer {
+pub fn act(parameter: SmDtonBuffer, work: bool) -> SmDtonBuffer {
     if work {
-        let _ret = smh.call(name, parameter);
+        let _ret = smh.call(parameter);
         return _ret;
     } else {
         let txt = parameter.stringify().unwrap();

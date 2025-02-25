@@ -45,9 +45,8 @@ pub fn handle_call_in_text(txt: &str, work: i32, sp: &Box<dyn ISmLibrSupport>) -
     let jo = json::parse(txt);
     match jo {
         Ok(v) => {
-            let name = v["$usage"].as_str().unwrap();
             let mut smb = SmDtonBuilder::new_from_json(&v);
-            let r = usesm::act(&name, smb.build(), work > 0);
+            let r = usesm::act(smb.build(), work > 0);
             let rd = SmDtonReader::new(&r.get_buffer());
             let out_txt = rd.to_json(1).unwrap().pretty(4);
             let ba = out_txt.as_bytes();
@@ -62,12 +61,11 @@ pub fn handle_call_in_text(txt: &str, work: i32, sp: &Box<dyn ISmLibrSupport>) -
 }
 
 pub fn handle_call_in(
-    name: &str,
     smb: SmDtonBuffer,
     work: i32,
     sp: &Box<dyn ISmLibrSupport>,
 ) -> i32 {
-    let r = usesm::act(name, smb, work > 0);
+    let r = usesm::act(smb, work > 0);
     let ptr = usesm::write_smb_a(1, "", &r.get_buffer(), sp); // heap +
     return ptr;
 }
