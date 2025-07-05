@@ -1,6 +1,6 @@
 [package]
 name = "smlibrbase"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2021"
 authors = ["smwasm@outlook.com"]
 repository = "https://github.com/smwasm/smlibrbase.git"
@@ -13,7 +13,7 @@ description = "SmartModule Base Library for Wasm"
 json = "0.12.4"
 lazy_static = "1.4.0"
 
-smcore = "0.1.3"
+smcore = "0.1.4"
 smdton = "0.1.2"
 
 [lib]
