@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 use std::sync::RwLock;
 
-use lazy_static::lazy_static;
+use std::sync::LazyLock;
 
 use crate::smcallout::sm_init;
 use crate::usesm::FL;
@@ -10,12 +10,12 @@ struct ForAll {
     pub map: HashMap<String, bool>,
 }
 
-lazy_static! {
-    static ref INIT: RwLock<ForAll> = RwLock::new(ForAll {
-        map: HashMap::new()
-    });
-    pub static ref FMT_JSON: RwLock<bool> = RwLock::new(false);
-}
+static INIT: LazyLock<RwLock<ForAll>> =
+    LazyLock::new(|| RwLock::new(ForAll {
+        map: HashMap::new(),
+    }));
+
+static FMT_JSON: RwLock<bool> = RwLock::new(false);
 
 pub fn is_init(name: &String) -> bool {
     let fa = INIT.read().unwrap();

@@ -1,4 +1,4 @@
-use lazy_static::lazy_static;
+use std::sync::LazyLock;
 use smdton::{SmDtonBuffer, SmDtonBuilder, SmDtonReader};
 use std::sync::RwLock;
 
@@ -6,9 +6,8 @@ use crate::usesm;
 use crate::{base_dealloc_d, ISmLibrSupport};
 use smcore::ISmCoreSupport;
 
-lazy_static! {
-    pub static ref SM_LIBR: RwLock<SmLibrOption> = RwLock::new(SmLibrOption { support: None });
-}
+pub static SM_LIBR: LazyLock<RwLock<SmLibrOption>> =
+    LazyLock::new(|| RwLock::new(SmLibrOption { support: None }));
 
 pub struct SmLibrOption {
     pub support: Option<Box<dyn ISmLibrSupport>>,
